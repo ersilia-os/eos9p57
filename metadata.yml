@@ -1,6 +1,6 @@
 Identifier: eos9p57
 Slug: crem-grow
-Status: In progress
+Status: Ready
 Title: CReM Growth-Based Structure Generation
 Description: Generates new analogues of an input molecule by attaching a small 
   fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an 
@@ -36,6 +36,18 @@ Source Code: https://github.com/DrrDom/crem
 License: BSD-3-Clause
 Contributor: arnaucoma24
 Incorporation Date: '2026-09-28'
+Last Packaging Date: '2026-09-28'
+Release: v1.0.0
 S3: https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos9p57.zip
+DockerHub: https://hub.docker.com/r/ersiliaos/eos9p57
+Docker Architecture:
+  - AMD64
+  - ARM64
 Model Size: 688.0
 Environment Size: 661.0
+Image Size: 2006.06
+Computational Performance 1: 29.88
+Computational Performance 2: 24.86
+Computational Performance 3: 150.74
+Computational Performance 4: 980.59
+Computational Performance 5: -1.0
