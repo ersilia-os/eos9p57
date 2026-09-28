@@ -2,43 +2,35 @@ Identifier: eos9p57
 Slug: crem-grow
 Status: In progress
 Title: CReM Growth-Based Structure Generation
-Description: Generates new drug-like analogues of an input molecule by attaching
-  small fragments (1-2 heavy atoms) from a curated ChEMBL-derived fragment 
-  database to available hydrogen positions. Every atom and bond of the original 
-  molecule is preserved unchanged, so the whole input structure is guaranteed to
-  appear intact within each output. Uses the GROW mode of the CReM framework; up
-  to 100 diverse analogues are returned per input, selected via K-Means 
-  clustering when more are generated.
+Description: Generates new analogues of an input molecule by attaching a small
+  fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an
+  available hydrogen position. Every atom and bond of the original structure is
+  preserved intact. Uses the GROW mode of the CReM framework; up to 100 diverse
+  analogues are returned per input via K-Means clustering. Cannot create new
+  ring systems, so ring diversity is limited by the fragment database.
 Deployment:
   - Local
-  - Online
-Source: Local, Online
-Source Type: Internal, Replicated, External
-Task: Annotation, Representation, Sampling
-Subtask: Property calculation or prediction, Activity prediction, Featurization,
-  Projection, Similarity search, Generation
+Source: Local
+Source Type: External
+Task: Sampling
+Subtask: Generation
 Input:
   - Compound
 Input Dimension: 1
 Output:
-  - Value
-  - Score
   - Compound
-  - Text
-Output Dimension: 1
-Output Consistency: Fixed, Variable
-Interpretation: The output of this template model should be interpreted like 
-  this.
+Output Dimension: 100
+Output Consistency: Variable
+Interpretation: Up to 100 new molecules per input, each retaining the original
+  structure with new fragments added at hydrogen positions.
 Tag:
   - Compound generation
 Biomedical Area:
-  - Biomedical Area 1
-  - Biomedical Area 2
+  - Any
 Target Organism:
-  - Target Organism 1
-  - Target Organism 2
-Publication Type: Peer reviewed, Preprint, Other
-Publication Year: 2026
+  - Any
+Publication Type: Peer reviewed
+Publication Year: 2020
 Publication: https://doi.org/10.1186/s13321-020-00431-w
 Source Code: https://github.com/DrrDom/crem
 License: BSD-3-Clause
