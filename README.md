@@ -2,6 +2,7 @@
 
 Generates new analogues of an input molecule by attaching a small fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an available hydrogen position. Every atom and bond of the original structure is preserved intact. Uses the GROW mode of the CReM framework; up to 100 diverse analogues are returned per input via K-Means clustering. Cannot create new ring systems, so ring diversity is limited by the fragment database.
 
+This model was incorporated on 2026-09-28.
 
 
 ## Information
@@ -43,8 +44,11 @@ _10 of 100 columns are shown_
 ### Source and Deployment
 - **Source:** `Local`
 - **Source Type:** `External`
+- **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos9p57.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos9p57.zip)
 
 ### Resource Consumption
+- **Model Size (Mb):** `688`
+- **Environment Size (Mb):** `661`
 
 
 ### References
