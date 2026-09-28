@@ -2,11 +2,11 @@ Identifier: eos9p57
 Slug: crem-grow
 Status: In progress
 Title: CReM Growth-Based Structure Generation
-Description: Generates new analogues of an input molecule by attaching a small
-  fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an
-  available hydrogen position. Every atom and bond of the original structure is
-  preserved intact. Uses the GROW mode of the CReM framework; up to 100 diverse
-  analogues are returned per input via K-Means clustering. Cannot create new
+Description: Generates new analogues of an input molecule by attaching a small 
+  fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an 
+  available hydrogen position. Every atom and bond of the original structure is 
+  preserved intact. Uses the GROW mode of the CReM framework; up to 100 diverse 
+  analogues are returned per input via K-Means clustering. Cannot create new 
   ring systems, so ring diversity is limited by the fragment database.
 Deployment:
   - Local
@@ -21,7 +21,7 @@ Output:
   - Compound
 Output Dimension: 100
 Output Consistency: Variable
-Interpretation: Up to 100 new molecules per input, each retaining the original
+Interpretation: Up to 100 new molecules per input, each retaining the original 
   structure with new fragments added at hydrogen positions.
 Tag:
   - Compound generation
@@ -35,3 +35,4 @@ Publication: https://doi.org/10.1186/s13321-020-00431-w
 Source Code: https://github.com/DrrDom/crem
 License: BSD-3-Clause
 Contributor: arnaucoma24
+Incorporation Date: '2026-09-28'
