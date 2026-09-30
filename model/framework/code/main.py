@@ -9,7 +9,7 @@ from crem.crem import grow_mol
 from rdkit import DataStructs
 from rdkit.Chem import MolFromSmiles, MolToSmiles, rdMolDescriptors
 from sklearn.cluster import MiniBatchKMeans
-from sklearn.metrics import pairwise_distances_argmin_min
+from sklearn.metrics import pairwise_distances
 
 from ersilia_pack_utils.core import read_smiles
 
@@ -38,7 +38,7 @@ def generate_fingerprint(mol, nbits, radius=3) -> np.ndarray:
 def sample_molecules(smiles: List[str]) -> List[str]:
     """
     Samples generated molecules into 100 clusters by fitting a K-Means clustering model
-    and returns the molecules closest to each cluster centre.
+    and returns one distinct molecule per cluster (the one closest to its centre).
     """
     features = 2048
     max_sampled = 2000
@@ -54,10 +54,18 @@ def sample_molecules(smiles: List[str]) -> List[str]:
 
     mbkm_estimator = MiniBatchKMeans(n_clusters=100)
     mbkm_estimator.fit(mol_fps)
-    closest, _ = pairwise_distances_argmin_min(
+    # One distinct molecule per centre. Taking each centre's nearest molecule outright
+    # (pairwise_distances_argmin_min) returns the same molecule for two centres whenever
+    # they share a nearest neighbour, which put up to 20 duplicates in a 100-molecule
+    # row. Each centre instead takes its nearest molecule not yet taken; `smiles`
+    # holds more than 100 unique molecules here, so a free one always exists.
+    distances = pairwise_distances(
         mbkm_estimator.cluster_centers_, mol_fps, metric="euclidean"
     )
-    for idx in closest:
+    taken = set()
+    for row in distances:
+        idx = next(i for i in np.argsort(row) if i not in taken)
+        taken.add(idx)
         sampled_smiles.append(smiles[idx])
     return sampled_smiles
 
