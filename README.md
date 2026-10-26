@@ -1,6 +1,6 @@
 # CReM Growth-Based Structure Generation
 
-Generates new analogues of an input molecule by attaching a small fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an available hydrogen position. Every atom and bond of the original structure is preserved intact. Uses the GROW mode of the CReM framework; up to 100 diverse analogues are returned per input via K-Means clustering. Cannot create new ring systems, so ring diversity is limited by the fragment database.
+Generates new analogues of an input molecule by attaching a small fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an available hydrogen position. Every atom and bond of the original structure is preserved intact. Uses the GROW mode of the CReM framework. When more than 100 analogues exist, K-Means clustering picks 100 diverse ones; otherwise all are returned, so many inputs get fewer than 100. Cannot create new ring systems, so ring diversity is limited by the fragment database.
 
 This model was incorporated on 2026-09-28.Last packaged on 2026-09-30.
 
