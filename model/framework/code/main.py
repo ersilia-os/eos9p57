@@ -38,7 +38,8 @@ def generate_fingerprint(mol, nbits, radius=3) -> np.ndarray:
 def sample_molecules(smiles: List[str]) -> List[str]:
     """
     Samples generated molecules into 100 clusters by fitting a K-Means clustering model
-    and returns one distinct molecule per cluster (the one closest to its centre).
+    and returns one distinct molecule per cluster (the nearest to its centre among the
+    molecules not already taken by another centre). Needs more than 100 unique molecules.
     """
     features = 2048
     max_sampled = 2000
@@ -74,18 +75,28 @@ def my_model(smiles_list: List[str]) -> List[List[str]]:
     output_smiles = []
     for smi in smiles_list:
         mol = MolFromSmiles(smi)
+        if mol is None:
+            # An input RDKit cannot parse gives a row of empty cells
+            print(f"Cannot parse input SMILES {smi!r}: empty row", file=sys.stderr)
+            output_smiles.append([""] * 100)
+            continue
         try:
             growth_result = list(grow_mol(mol=mol, db_name=database_path, ncores=2))
-        except Exception:
+        except Exception as e:
+            print(f"CReM grow failed for {smi!r}: {type(e).__name__}: {e}", file=sys.stderr)
             growth_result = []  # Nothing generated
 
         # Dedup by canonical SMILES, not the raw generator-yielded string: CReM can
-        # yield two different SMILES strings for the same canonical molecule.
+        # yield two different SMILES strings for the same canonical molecule. A
+        # candidate RDKit cannot parse is dropped (it would stop the fingerprinting
+        # of the clustering step below).
         seen = set()
         generated_smiles = []
         for s in growth_result:
             m = MolFromSmiles(s)
-            key = MolToSmiles(m) if m is not None else s
+            if m is None:
+                continue
+            key = MolToSmiles(m)
             if key in seen:
                 continue
             seen.add(key)
