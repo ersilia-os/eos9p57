@@ -2,7 +2,7 @@
 
 Generates new analogues of an input molecule by attaching a small fragment (1-2 heavy atoms) from a curated ChEMBL fragment database to an available hydrogen position. Every atom and bond of the original structure is preserved intact. Uses the GROW mode of the CReM framework. When more than 100 analogues exist, K-Means clustering picks 100 diverse ones; otherwise all are returned, so many inputs get fewer than 100. Cannot create new ring systems, so ring diversity is limited by the fragment database.
 
-This model was incorporated on 2026-09-28.Last packaged on 2026-09-30.
+This model was incorporated on 2026-09-28.Last packaged on 2026-10-26.
 
 ## Information
 ### Identifiers
@@ -49,12 +49,12 @@ _10 of 100 columns are shown_
 
 ### Resource Consumption
 - **Model Size (Mb):** `688`
-- **Environment Size (Mb):** `662`
-- **Image Size (Mb):** `2006.05`
+- **Environment Size (Mb):** `661`
+- **Image Size (Mb):** `2013.12`
 
 **Computational Performance (seconds):**
-- 10 inputs: `29.96`
-- 100 inputs: `149.05`
+- 10 inputs: `33.06`
+- 100 inputs: `132.58`
 - 10000 inputs: `-1`
 
 ### References
