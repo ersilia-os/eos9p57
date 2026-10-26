@@ -37,7 +37,7 @@ Source Code: https://github.com/DrrDom/crem
 License: BSD-3-Clause
 Contributor: arnaucoma24
 Incorporation Date: '2026-09-28'
-Last Packaging Date: '2026-09-30'
+Last Packaging Date: '2026-10-26'
 Release: v1.0.0
 S3: https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos9p57.zip
 DockerHub: https://hub.docker.com/r/ersiliaos/eos9p57
@@ -46,9 +46,9 @@ Docker Architecture:
   - ARM64
 Model Size: 688.0
 Environment Size: 661.0
-Image Size: 2006.05
-Computational Performance 1: 29.96
-Computational Performance 2: 26.08
-Computational Performance 3: 149.05
-Computational Performance 4: 988.11
+Image Size: 2013.12
+Computational Performance 1: 33.06
+Computational Performance 2: 26.66
+Computational Performance 3: 132.58
+Computational Performance 4: 855.04
 Computational Performance 5: -1.0
