@@ -38,7 +38,7 @@ License: BSD-3-Clause
 Contributor: arnaucoma24
 Incorporation Date: '2026-09-28'
 Last Packaging Date: '2026-10-26'
-Release: v1.0.0
+Release: v1.1.0
 S3: https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos9p57.zip
 DockerHub: https://hub.docker.com/r/ersiliaos/eos9p57
 Docker Architecture:
